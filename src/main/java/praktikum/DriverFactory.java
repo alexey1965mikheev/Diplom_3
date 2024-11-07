@@ -32,7 +32,6 @@ public class DriverFactory {
         System.setProperty("webdriver.chrome.driver", "src/main/resources/yandexdriver");
         ChromeOptions options = new ChromeOptions();
         options.addArguments("--remote-allow-origins=*");
-        options.setBinary("/Applications/Yandex.app/Contents/MacOS/Yandex");
         driver = new ChromeDriver(options);
         driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(10));
     }

@@ -72,36 +72,30 @@ public class MainPage {
         waitForInvisibilityLoadingAnimation();
     }
 
-    public void clickOnBunsButton() throws InterruptedException {
-        Thread.sleep(500);
+    public void clickOnBunsButton() {
         driver.findElement(bunsButton).click();
 
     }
 
-    public void clickOnSaucesButton() throws InterruptedException {
-        Thread.sleep(500);
+    public void clickOnSaucesButton() {
         driver.findElement(saucesButton).click();
     }
 
-    public void clickOnFillingButton() throws InterruptedException {
-        Thread.sleep(500);
+    public void clickOnFillingButton()  {
         driver.findElement(fillingsButton).click();
     }
 
-    public void checkToppingBun() throws InterruptedException {
-        Thread.sleep(500);
+    public void checkToppingBun() {
         String countActivity = driver.findElement(activityTopping).getText();
         assertEquals("Булки", countActivity);
     }
 
-    public void checkToppingSauce() throws InterruptedException {
-        Thread.sleep(500);
+    public void checkToppingSauce()  {
         String countActivity = driver.findElement(activityTopping).getText();
         assertEquals(countActivity, "Соусы");
     }
 
-    public void checkToppingFillings() throws InterruptedException {
-        Thread.sleep(1000);
+    public void checkToppingFillings()  {
         String countActivity = driver.findElement(activityTopping).getText();
         assertEquals(countActivity, "Начинки");
     }

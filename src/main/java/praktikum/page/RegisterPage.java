@@ -23,7 +23,9 @@ public class RegisterPage {
     // Локатор надписи "Некорректный пароль"
     public final By errorPasswordText = By.xpath(".//p[text()='Некорректный пароль']");
     // Локатор текста заголовка "Регистрация"
-    public final By registerText = By.xpath(".//div/h2[text()='Регистрация']");
+    private final By registerText = By.xpath(".//div/h2[text()='Регистрация']");
+
+    private final By loginButton = By.className("Auth_link__1fOlj");
 
     public RegisterPage(WebDriver driver) {
         this.driver = driver;
@@ -42,6 +44,11 @@ public class RegisterPage {
     @Step ("Ввести пароль")
     public void enterPassword(String password) {
         driver.findElement(passwordField).sendKeys(password);
+    }
+
+    @Step("Нажать на кнопку 'Войти'")
+    public void clickLoginButton() {
+        driver.findElement(loginButton).click();
     }
 
     @Step ("Кликнуть по кнопке Зарегистрироваться")

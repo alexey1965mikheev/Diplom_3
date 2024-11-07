@@ -1,15 +1,16 @@
 package praktikum.users;
 
+import io.qameta.allure.Step;
 import io.restassured.http.ContentType;
 import praktikum.EnvConfig;
 import io.restassured.response.Response;
 
 import static io.restassured.RestAssured.given;
-import static praktikum.EnvConfig.CREATE_USER;
-import static praktikum.EnvConfig.CREDENTIALS;
+import static praktikum.EnvConfig.*;
 
 public class UserClient {
 
+    @Step("Создание пользователя")
     public static Response createUser(User user) {
         return given().log().all()
                 .contentType(ContentType.JSON)
@@ -19,8 +20,10 @@ public class UserClient {
                 .post(CREATE_USER);
     }
 
+    @Step("Удаление пользователя")
     public Response deleteUser(String accessToken) {
         return given()
+                .contentType(ContentType.JSON)
                 .header("Authorization", accessToken)
                 .when()
                 .delete(CREDENTIALS);

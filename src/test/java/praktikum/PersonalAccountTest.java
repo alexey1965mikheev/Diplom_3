@@ -4,12 +4,10 @@ import io.qameta.allure.Description;
 import io.qameta.allure.junit4.DisplayName;
 import org.junit.Assert;
 import org.junit.Test;
-import org.openqa.selenium.WebDriver;
 import praktikum.page.LoginPage;
-import praktikum.page.MainPage;
 import praktikum.page.ProfilePage;
 
-public class PersonalAccountTest extends StellarBurgersTests {
+public class PersonalAccountTest extends BaseTest {
 
     private final static String EMAIL = "alex.mikheev_10@gmail.com";
     private final static String PASSWORD = "1111111111";
@@ -18,7 +16,6 @@ public class PersonalAccountTest extends StellarBurgersTests {
     @DisplayName("Переход в личный кабинет")
     @Description("Проверка перехода по клику на 'Личный кабинет'.")
     public void transitionToPersonalAccountTest() {
-        MainPage mainPage = new MainPage(driver);
         mainPage.clickOnAccountButton();
         LoginPage loginPage = new LoginPage(driver);
         loginPage.waitForLoadEntrance();
@@ -29,7 +26,6 @@ public class PersonalAccountTest extends StellarBurgersTests {
     @DisplayName("Переход в конструктор из личного кабинета")
     @Description("Проверка перехода на вкладку 'Конструктор' со страницы авторизации пользователя")
     public void transitionToConstructorFromPersonalAccountTest() {
-        MainPage mainPage = new MainPage(driver);
         mainPage.waitForInvisibilityLoadingAnimation();
         mainPage.clickOnAccountButton();
         LoginPage loginPage = new LoginPage(driver);
@@ -43,7 +39,6 @@ public class PersonalAccountTest extends StellarBurgersTests {
     @DisplayName("Переход в конструктор через логотип 'Stellar Burgers'")
     @Description("Проверка перехода в конструктор при клике по логотипу 'Stellar Burgers'.")
     public void transitionToStellarBurgersFromProfilePageTest() {
-        MainPage mainPage = new MainPage(driver);
         mainPage.clickOnAccountButton();
         LoginPage loginPage = new LoginPage(driver);
         loginPage.waitForLoadEntrance();
@@ -56,7 +51,6 @@ public class PersonalAccountTest extends StellarBurgersTests {
     @DisplayName("Выход из аккаунта")
     @Description("Проверка выхода кликом по кнопке 'Выйти' в личном кабинете")
     public void exitFromProfileTest() {
-        MainPage mainPage = new MainPage(driver);
         mainPage.clickOnAccountButton();
         LoginPage loginPage = new LoginPage(driver);
         loginPage.waitForLoadEntrance();

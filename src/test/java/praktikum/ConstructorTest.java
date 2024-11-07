@@ -2,27 +2,14 @@ package praktikum;
 
 import io.qameta.allure.Description;
 import io.qameta.allure.junit4.DisplayName;
-import org.junit.After;
-import org.junit.Before;
 import org.junit.Test;
 import org.openqa.selenium.WebDriver;
 import praktikum.page.MainPage;
 
-public class ConstructorTest {
-
-    private WebDriver driver;
-    private final DriverFactory factory = new DriverFactory();
+public class ConstructorTest extends StellarBurgersTests {
 
     public ConstructorTest() {
     }
-
-    @Before
-    public void initDriver() {
-        factory.initDriver();
-        driver = factory.getDriver();
-        new MainPage(driver).open();
-    }
-
 
     @Test
     @DisplayName("Переход в раздел 'Булки'")
@@ -50,10 +37,5 @@ public class ConstructorTest {
         MainPage mainPage = new MainPage(driver);
         mainPage.clickOnFillingButton();
         mainPage.checkToppingFillings();
-    }
-
-    @After
-    public void tearDown() {
-        driver.quit();
     }
 }

@@ -2,35 +2,17 @@ package praktikum;
 
 import io.qameta.allure.Description;
 import io.qameta.allure.junit4.DisplayName;
-import org.junit.After;
 import org.junit.Assert;
-import org.junit.Before;
 import org.junit.Test;
-import org.junit.runners.Parameterized;
 import org.openqa.selenium.WebDriver;
-import org.openqa.selenium.chrome.ChromeDriver;
-import org.openqa.selenium.chrome.ChromeOptions;
 import praktikum.page.LoginPage;
 import praktikum.page.MainPage;
 import praktikum.page.ProfilePage;
 
-import java.util.concurrent.TimeUnit;
+public class PersonalAccountTest extends StellarBurgersTests {
 
-public class PersonalAccountTest {
-
-    private WebDriver driver;
-    private final DriverFactory factory = new DriverFactory();
     private final static String EMAIL = "alex.mikheev_10@gmail.com";
     private final static String PASSWORD = "1111111111";
-
-    //public PersonalAccountTest() {}
-
-    @Before
-    public void initDriver() {
-        factory.initDriver();
-        driver = factory.getDriver();
-        new MainPage(driver).open();
-    }
 
     @Test
     @DisplayName("Переход в личный кабинет")
@@ -86,11 +68,5 @@ public class PersonalAccountTest {
         profilePage.clickOnExitButton();
         mainPage.waitForInvisibilityLoadingAnimation();
         Assert.assertTrue("Не удалось выйти из аккаунта", driver.findElement(loginPage.entrance).isDisplayed());
-    }
-
-    @After
-    public void tearDown() {
-
-        driver.quit();
     }
 }

@@ -2,7 +2,6 @@ package praktikum;
 
 import io.qameta.allure.Description;
 import io.qameta.allure.junit4.DisplayName;
-import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
 import org.openqa.selenium.WebDriver;
@@ -10,20 +9,25 @@ import praktikum.page.LoginPage;
 import praktikum.page.MainPage;
 import praktikum.page.PasswordRecoveryPage;
 import praktikum.page.RegisterPage;
+import praktikum.users.UserClient;
 
 import static org.apache.commons.lang3.RandomStringUtils.randomAlphanumeric;
 
-public class LoginTest {
-    private WebDriver driver;
-    private final DriverFactory factory = new DriverFactory();
-    private static String EMAIL = "alex.mikheev_10@gmail.com";
-    private static String PASSWORD = "1111111111";
+public class LoginTest extends StellarBurgersTests {
+
+    private static final String EMAIL = "alex.mikheev_10@gmail.com";
+    private static final String PASSWORD = "1111111111";
+
+    private final UserClient userClient;
+
+    public LoginTest() {
+       userClient = new UserClient();
+    }
 
     @Before
     public void initDriver() {
-        factory.initDriver();
-        driver = factory.getDriver();
-        new MainPage(driver).open();
+       super.initDriver();
+
     }
 
     @Test
@@ -59,7 +63,6 @@ public class LoginTest {
         RegisterPage registerPage = new RegisterPage(driver);
         String name = randomAlphanumeric(4, 8);
         String email = randomAlphanumeric(6, 10) + "@yandex.ru";
-        ;
         String password = randomAlphanumeric(6, 10);
         registerPage.registration(name, email, password);
         loginPage.waitForLoadEntrance();
@@ -80,11 +83,5 @@ public class LoginTest {
         recoverPasswordPage.clickOnLoginLink();
         loginPage.authorization(EMAIL, PASSWORD);
         mainPage.waitForLoadMainPage();
-    }
-
-    @After
-    public void tearDown() {
-
-        driver.quit();
     }
 }

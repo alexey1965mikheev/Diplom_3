@@ -21,11 +21,13 @@ public class UserClient {
     }
 
     @Step("Удаление пользователя")
-    public Response deleteUser(String accessToken) {
-        return given()
+    public static void deleteUser(String accessToken) {
+        given()
                 .contentType(ContentType.JSON)
                 .header("Authorization", accessToken)
+                .baseUri(BASE_URL)
                 .when()
-                .delete(CREDENTIALS);
+                .delete(CREDENTIALS)
+                .then();
     }
 }

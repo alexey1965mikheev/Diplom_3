@@ -10,7 +10,6 @@ public class BaseTest {
 
     protected WebDriver driver;
     protected DriverFactory factory;
-    protected UserClient userClient;
 
     protected MainPage mainPage;
 
@@ -22,8 +21,6 @@ public class BaseTest {
         factory.initDriver();
         driver = factory.getDriver();
 
-        userClient = new UserClient();
-
         mainPage = new MainPage(driver);
         mainPage.open();
         mainPage.waitForLoadMainPage();
@@ -33,7 +30,7 @@ public class BaseTest {
     public void tearDown() {
         driver.quit();
         if (token != null) {
-            userClient.deleteUser(token);
+            UserClient.deleteUser(token);
         }
     }
 }

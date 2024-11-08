@@ -28,10 +28,14 @@ public class DriverFactory {
         driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(10));
     }
 
+    //start with:
+    //mvn clean test -Dyandex.path=/Applications/Yandex.app/Contents/MacOS/Yandex
     public void startYandex() {
         System.setProperty("webdriver.chrome.driver", "src/main/resources/yandexdriver");
         ChromeOptions options = new ChromeOptions();
         options.addArguments("--remote-allow-origins=*");
+        String yandexPath = System.getProperty("yandex.path");
+        options.setBinary(yandexPath);
         driver = new ChromeDriver(options);
         driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(10));
     }

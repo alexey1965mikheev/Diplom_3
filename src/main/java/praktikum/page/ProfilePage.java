@@ -5,6 +5,7 @@ import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
+import praktikum.EnvConfig;
 
 import java.time.Duration;
 
@@ -38,13 +39,13 @@ public class ProfilePage {
 
     @Step("Ожидание загрузки страницы личного кабинета")
     public void waitForLoadProfilePage() {
-        new WebDriverWait(driver, Duration.ofSeconds(3))
+        new WebDriverWait(driver, Duration.ofSeconds(EnvConfig.IMPLICIT_WAIT))
                 .until(ExpectedConditions.visibilityOfElementLocated(textOnProfilePage));
     }
 
     @Step("Ожидание полной загрузки страницы")
     public void waitForInvisibilityLoadingAnimation() {
-        new WebDriverWait(driver, Duration.ofSeconds(5))
+        new WebDriverWait(driver, Duration.ofSeconds(EnvConfig.IMPLICIT_WAIT))
                 .until(ExpectedConditions.invisibilityOfElementLocated
                         (By.xpath(".//img[@src='./static/media/loading.89540200.svg' and @alt='loading animation']")));
     }

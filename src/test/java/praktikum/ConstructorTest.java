@@ -27,7 +27,7 @@ public class ConstructorTest extends BaseTest {
     @DisplayName("Переход в раздел 'Начинки'")
     @Description("Проверка перехода в раздел 'Начинки' и появление картинки с начинкой")
     public void transitionToFillingsSectionTest() {
-        mainPage.clickOnFillingButton();
+        mainPage.clickOnFillingsButton();
         mainPage.checkToppingFillings();
     }
 }

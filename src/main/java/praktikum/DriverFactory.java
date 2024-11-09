@@ -25,18 +25,15 @@ public class DriverFactory {
     public void startChrome() {
         WebDriverManager.chromedriver().setup();
         driver = new ChromeDriver();
-        driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(10));
+        driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(EnvConfig.EXPLICIT_WAIT));
     }
 
-    //start with:
-    //mvn clean test -Dyandex.path=/Applications/Yandex.app/Contents/MacOS/Yandex
+    // Параметры для запуска yandex в README.md
     public void startYandex() {
-        System.setProperty("webdriver.chrome.driver", "src/main/resources/yandexdriver");
-        ChromeOptions options = new ChromeOptions();
-        options.addArguments("--remote-allow-origins=*");
-        String yandexPath = System.getProperty("yandex.path");
-        options.setBinary(yandexPath);
+        WebDriverManager.chromedriver().driverVersion(System.getProperty("driver.version")).setup();
+        var options = new ChromeOptions();
+        options.setBinary(System.getProperty("webdriver.yandex.bin"));
         driver = new ChromeDriver(options);
-        driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(10));
+        driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(EnvConfig.EXPLICIT_WAIT));
     }
 }

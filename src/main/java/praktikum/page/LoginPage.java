@@ -5,6 +5,7 @@ import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
+import praktikum.EnvConfig;
 
 import java.time.Duration;
 
@@ -44,25 +45,25 @@ public class LoginPage {
         driver.findElement(passwordField).sendKeys(password);
     }
 
-    @Step("Кликнуть по кнопке Войти")
+    @Step("Нажать на кнопку 'Войти'")
     public void clickOnLoginButton() {
         driver.findElement(loginButton).click();
         waitForInvisibilityLoadingAnimation();
     }
 
-    @Step("Кликнуть по ссылке Зарегистрироваться")
+    @Step("Кликнуть по ссылке 'Зарегистрироваться'")
     public void clickOnRegisterLink() {
         driver.findElement(registerLink).click();
         waitForInvisibilityLoadingAnimation();
     }
 
-    @Step("Кликнуть по ссылке Восстановить пароль")
+    @Step("Кликнуть по ссылке 'Восстановить пароль'")
     public void clickOnForgotPasswordLink() {
         driver.findElement(forgotPasswordLink).click();
         waitForInvisibilityLoadingAnimation();
     }
 
-    @Step("Кликнуть по кнопке Конструктор")
+    @Step("Нажать на кнопку 'Конструктор'")
     public void clickOnConstructorButton() {
         driver.findElement(constructorButton).click();
         waitForInvisibilityLoadingAnimation();
@@ -81,15 +82,15 @@ public class LoginPage {
         clickOnLoginButton();
     }
 
-    @Step("Ожидание загрузки заголовка ВХОД")
+    @Step("Ожидание загрузки заголовка 'Вход'")
     public void waitForLoadEntrance() {
-        new WebDriverWait(driver, Duration.ofSeconds(3))
+        new WebDriverWait(driver, Duration.ofSeconds(EnvConfig.IMPLICIT_WAIT))
                 .until(ExpectedConditions.visibilityOfElementLocated(entrance));
     }
 
     @Step("Ожидание загрузки страницы")
     public void waitForInvisibilityLoadingAnimation() {
-        new WebDriverWait(driver, Duration.ofSeconds(5))
+        new WebDriverWait(driver, Duration.ofSeconds(EnvConfig.IMPLICIT_WAIT))
                 .until(ExpectedConditions.invisibilityOfElementLocated
                         (By.xpath(".//img[@src='./static/media/loading.89540200.svg' and @alt='loading animation']")));
     }

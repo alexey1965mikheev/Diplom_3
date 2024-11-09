@@ -5,6 +5,7 @@ import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
+import praktikum.EnvConfig;
 
 import java.time.Duration;
 
@@ -51,7 +52,7 @@ public class RegisterPage {
         driver.findElement(loginButton).click();
     }
 
-    @Step ("Кликнуть по кнопке Зарегистрироваться")
+    @Step ("Нажать на кнопку 'Зарегистрироваться'")
     public void clickOnRegisterButton() {
         driver.findElement(registerButton).click();
         waitForInvisibilityLoadingAnimation();
@@ -65,15 +66,15 @@ public class RegisterPage {
         clickOnRegisterButton();
     }
 
-    @Step("Ожидание загрузки текста Регистрация")
+    @Step("Ожидание загрузки текста 'Регистрация'")
     public void waitForLoadRegisterPage() {
-        new WebDriverWait(driver, Duration.ofSeconds(3))
+        new WebDriverWait(driver, Duration.ofSeconds(EnvConfig.EXPLICIT_WAIT))
                 .until(ExpectedConditions.visibilityOfElementLocated(registerText));
     }
 
-    @Step("Ожидание полной загрузки страницы регистрации")
+    @Step("Ожидание загрузки страницы регистрации")
     public void waitForInvisibilityLoadingAnimation() {
-        new WebDriverWait(driver, Duration.ofSeconds(5))
+        new WebDriverWait(driver, Duration.ofSeconds(EnvConfig.EXPLICIT_WAIT))
                 .until(ExpectedConditions.invisibilityOfElementLocated
                         (By.xpath(".//img[@src='./static/media/loading.89540200.svg' and @alt='loading animation']")));
     }

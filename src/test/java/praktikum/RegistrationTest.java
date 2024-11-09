@@ -15,7 +15,7 @@ public class RegistrationTest extends BaseTest {
     private final String NAME = randomAlphanumeric(4, 8);
     private final String EMAIL = randomAlphanumeric(6, 10) + "@yandex.ru";
     private final String PASSWORD = randomAlphanumeric(10, 20);
-    private final String PASSWORD_FAILED = randomAlphanumeric(0, 5);
+    private final String INCORRECT_PASSWORD = randomAlphanumeric(1, 5);
 
     @Test
     @DisplayName("Успешная регистрация")
@@ -39,7 +39,7 @@ public class RegistrationTest extends BaseTest {
         loginPage.clickOnRegisterLink();
         RegisterPage registerPage = new RegisterPage(driver);
         registerPage.waitForLoadRegisterPage();
-        registerPage.registration(NAME, EMAIL, PASSWORD_FAILED);
+        registerPage.registration(NAME, EMAIL, INCORRECT_PASSWORD);
 
         Assert.assertTrue("Текст об ошибке отсутствует", driver.findElement(registerPage.errorPasswordText).isDisplayed());
     }

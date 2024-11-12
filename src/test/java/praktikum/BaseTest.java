@@ -20,7 +20,6 @@ public class BaseTest {
         factory = new DriverFactory();
         factory.initDriver();
         driver = factory.getDriver();
-
         mainPage = new MainPage(driver);
         mainPage.open();
         mainPage.waitForLoadMainPage();

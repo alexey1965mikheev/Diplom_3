@@ -22,7 +22,6 @@ public class PasswordRecoveryPage {
     // Локатор кнопки "Войти"
     private final By loginLink = By.xpath(".//div/p/a[@href = '/login' and text() = 'Войти']");
 
-
     public PasswordRecoveryPage(WebDriver driver) {
         this.driver = driver;
     }

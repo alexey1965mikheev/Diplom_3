@@ -50,7 +50,6 @@ public class MainPage {
         waitForInvisibilityLoadingAnimation();
     }
 
-
     public void clickOnBunsButton() {
         driver.findElement(bunsButton).click();
 

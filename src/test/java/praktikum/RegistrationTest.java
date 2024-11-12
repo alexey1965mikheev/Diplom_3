@@ -5,6 +5,7 @@ import io.qameta.allure.Description;
 import io.qameta.allure.junit4.DisplayName;
 import org.junit.Assert;
 import org.junit.Test;
+import org.openqa.selenium.html5.WebStorage;
 import praktikum.page.LoginPage;
 import praktikum.page.RegisterPage;
 
@@ -28,6 +29,9 @@ public class RegistrationTest extends BaseTest {
         registerPage.waitForLoadRegisterPage();
         registerPage.registration(NAME, EMAIL, PASSWORD);
         loginPage.waitForLoadEntrance();
+        loginPage.authorization(EMAIL, PASSWORD);
+        mainPage.waitForLoadMainPage();
+        token = ((WebStorage) driver).getLocalStorage().getItem("accessToken");
     }
 
     @Test

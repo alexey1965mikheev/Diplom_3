@@ -24,11 +24,13 @@ public class DriverFactory {
 
     public void startChrome() {
         WebDriverManager.chromedriver().setup();
-        driver = new ChromeDriver();
+        ChromeOptions options = new ChromeOptions();
+        options.addArguments("--start-maximized");
+        driver = new ChromeDriver(options);
         driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(EnvConfig.EXPLICIT_WAIT));
     }
 
-    // Параметры для запуска yandex в README.md
+    //Параметры для запуска yandex в README.md
     public void startYandex() {
         WebDriverManager.chromedriver().driverVersion(System.getProperty("driver.version")).setup();
         var options = new ChromeOptions();

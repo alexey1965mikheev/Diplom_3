@@ -20,7 +20,6 @@ public class ProfilePage {
     // Локатор надписи для перехода в Личный кабинет
     public final By textOnProfilePage = By.xpath(".//nav/p[text()='В этом разделе вы можете изменить свои персональные данные']");
 
-
     public ProfilePage(WebDriver driver) {
         this.driver = driver;
     }

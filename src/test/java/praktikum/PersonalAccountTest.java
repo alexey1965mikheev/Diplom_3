@@ -2,16 +2,27 @@ package praktikum;
 
 import io.qameta.allure.Description;
 import io.qameta.allure.junit4.DisplayName;
+import io.restassured.response.Response;
 import org.junit.Assert;
+import org.junit.Before;
 import org.junit.Test;
+
 import praktikum.page.LoginPage;
 import praktikum.page.ProfilePage;
+import praktikum.users.User;
+import praktikum.users.UserClient;
 
 public class PersonalAccountTest extends BaseTest {
 
     private final static String EMAIL = "alex.mikheev_10@gmail.com";
     private final static String PASSWORD = "1111111111";
+    private final static String NAME = "Alex";
 
+    @Before
+    public void registerUser() {
+        Response response = UserClient.createUser(new User(EMAIL, PASSWORD, NAME));
+        token = response.path("accessToken");
+    }
     @Test
     @DisplayName("Переход в личный кабинет")
     @Description("Проверка перехода по клику на 'Личный кабинет'.")
